@@ -16,7 +16,7 @@ const store = {
         'Rasberry Big Gulps',
         'Trees'
       ],
-      correctAnswer: 'The atmostphere'
+      correctAnswer: 'The atmosphere'
     },
     {
       question: 'Earth is located in which galaxy?',
