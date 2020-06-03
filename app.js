@@ -22,7 +22,7 @@ const store = {
         '2019',
         '2005'
       ],
-      correctAnswer: '2019'
+      correctAnswer: '2020'
     }
   ],
   quizStarted: false,
