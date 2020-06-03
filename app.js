@@ -3,36 +3,68 @@
  */
 'use strict';
 const store = {
-// 5 or more questions are required
-questions: [
-  { 
-    question: 'What color is broccoli?',
-    answers: [
-      'red',
-      'orange',
-      'pink',
-      'green'
-    ],
-    correctAnswer: 'green'
-  },
-  {
-    question: 'What is the current year?',
-    answers: [
-      '1970',
-      '2015',
-      '2019',
-      '2005'
-    ],
-    correctAnswer: '2019'
-  },
-  {
-    question: ''
-  }
-],
-quizStarted: false,
-questionNumber: 0,
-score: 0
+
+  // 5 or more questions are required
+
+  //create answers array and answer key array
+  questions: [
+    {
+      question: 'Why is the sky blue?',
+      answers: [
+        'The atmosphere',
+        'Smurfs',
+        'Rasberry Big Gulps',
+        'Trees'
+      ],
+      correctAnswer: 'The atmostphere'
+    },
+    {
+      question: 'Earth is located in which galaxy?',
+      answers: [
+        'Andromeda',
+        'Milky Way',
+        'ESO 325-G004',
+        'M101'
+      ],
+      correctAnswer: 'Milky Way'
+    },
+    {
+      question: 'What measures electric currents?',
+      answers: [
+        'Spoon',
+        'Fork',
+        'Ammeter',
+        'Grass'
+      ],
+      correctAnswer: 'Ammeter'
+    },
+
+    {
+      question: 'True or False? Iron is attracted by magnets.',
+      answers: [
+        'True',
+        'False',
+      ],
+      correctAnswer: 'True'
+    },
+
+    {
+      question: 'What is the chemical formula for water?',
+      answers: [
+        'H2O',
+        'CO2',
+        'NaCl',
+        'C6-H12-O6'
+      ],
+      correctAnswer: 'H2O'
+    },
+  ],
+  quizStarted: false,
+  questionNumber: 0,
+  score: 0
 };
+
+
 
 /**
  * 
