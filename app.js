@@ -3,26 +3,38 @@
  */
 const store = {
   // 5 or more questions are required
+
+  //create answers array and answer key array
   questions: [
     {
-      question: 'What color is broccoli?',
+      question: 'Why is the sky blue?',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'The atmosphere',
+        'Smurfs',
+        'Rasberry Big Gulps',
+        'Trees'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'The atmostphere'
     },
     {
-      question: 'What is the current year?',
+      question: 'Earth is located in which galaxy?',
       answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
+        'Andromeda',
+        'Milky Way',
+        'ESO 325-G004',
+        'M101'
       ],
-      correctAnswer: '2020'
+      correctAnswer: 'Milky Way'
+    },
+    {
+      question: 'What measures electric currents?',
+      answers: [
+        'Andromeda',
+        'Milky Way',
+        'ESO 325-G004',
+        'M101'
+      ],
+      correctAnswer: 'Milky Way'
     }
   ],
   quizStarted: false,
