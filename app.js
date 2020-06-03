@@ -62,7 +62,7 @@ const store = {
   quizStarted: false,
   questionNumber: 0,
   score: 0,
-  answerKey: ['The atmostphere','Milky Way','Ammeter','True','H2O',]
+  answerKey: ['The atmosphere','Milky Way','Ammeter','True','H2O',]
 };
 
 
