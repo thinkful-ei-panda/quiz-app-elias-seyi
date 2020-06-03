@@ -29,18 +29,40 @@ const store = {
     {
       question: 'What measures electric currents?',
       answers: [
-        'Andromeda',
-        'Milky Way',
-        'ESO 325-G004',
-        'M101'
+        'Spoon',
+        'Fork',
+        'Ammeter',
+        'Grass'
       ],
-      correctAnswer: 'Milky Way'
-    }
+      correctAnswer: 'Ammeter'
+    },
+
+    {
+      question: 'True or False? Iron is attracted by magnets.',
+      answers: [
+        'True',
+        'False',
+      ],
+      correctAnswer: 'True'
+    },
+
+    {
+      question: 'What is the chemical formula for water?',
+      answers: [
+        'H2O',
+        'CO2',
+        'NaCl',
+        'C6-H12-O6'
+      ],
+      correctAnswer: 'H2O'
+    },
   ],
   quizStarted: false,
   questionNumber: 0,
   score: 0
 };
+
+
 
 /**
  * 
