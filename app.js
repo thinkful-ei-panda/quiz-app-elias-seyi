@@ -59,7 +59,8 @@ const store = {
   ],
   quizStarted: false,
   questionNumber: 0,
-  score: 0
+  score: 0,
+  answerKey: ['The atmostphere','Milky Way','Ammeter','True','H2O',]
 };
 
 
@@ -83,9 +84,20 @@ const store = {
 
 // These functions return HTML templates
 
+
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
+
+//renders the quiz
+function renderQuiz() {
+  console.log('`renderQuiz` ran');
+}
+
+//renders the question
+function renderQuestion() {
+  console.log('`renderQuestion` ran');
+}
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
