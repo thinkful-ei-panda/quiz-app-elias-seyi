@@ -1,7 +1,9 @@
 /**
  * Example store structure
  */
+'use strict';
 const store = {
+
   // 5 or more questions are required
 
   //create answers array and answer key array
@@ -14,7 +16,7 @@ const store = {
         'Rasberry Big Gulps',
         'Trees'
       ],
-      correctAnswer: 'The atmostphere'
+      correctAnswer: 'The atmosphere'
     },
     {
       question: 'Earth is located in which galaxy?',
