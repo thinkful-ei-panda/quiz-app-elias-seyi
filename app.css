@@ -9,6 +9,7 @@
 /*-------THIS IS THE BEGGING OF THE CSS ---*/
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
@@ -34,9 +35,7 @@ body {
 }
 */
 
-main {
-  font-size: 16px;
-}
+
 
 #questionsForm {
   background-color: #999;
@@ -44,20 +43,18 @@ main {
 
 /* ----- THIS IS THE RADIO BUTTONS STYLING ---*//*----------------*/
 
-button, input[type='radio'] {
-  appearance: none;
-
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-
-  border: 2px solid #999;
-  transition: 0.2s all linear;
-  margin-right: 5px;
-
-  position: relative;
-  top: 4px;
+button {
+  background-color: lightgrey;
+  color: black;
+  text-align: center;
+  padding: 5px;
 }
+legend { 
+  background-color: #000; 
+  color: #fff; 
+  padding: 3px 6px; 
+}
+
 
 input:checked {
   border: 6px solid black;
@@ -72,6 +69,7 @@ legend {
   border: 0;
   font-size: 14px;
 }
+
 
 button:hover,
 button:focus {
@@ -113,4 +111,39 @@ button:active {
 
 .shopping-item__checked {
   text-decoration: line-through;
+}
+
+
+/* desktop view  */
+
+@media screen and (min-width: 320px) {
+  h1 {
+    justify-content: center;
+  }
+  main {
+    font-size: 14pt;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  form {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+
+  main {
+    font-size: 16pt;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  header > h1 {
+    font-size: 45pt;
+  }
+  main {
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 26pt;
+  }
 }
