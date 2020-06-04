@@ -9,6 +9,7 @@
 /*-------THIS IS THE BEGGING OF THE CSS ---*/
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
@@ -35,6 +36,9 @@ body {
 */
 
 main {
+  display: flex;
+  width: 100%;
+  justify-content: center;
   font-size: 16px;
 }
 
@@ -44,20 +48,18 @@ main {
 
 /* ----- THIS IS THE RADIO BUTTONS STYLING ---*//*----------------*/
 
-button, input[type='radio'] {
-  appearance: none;
-
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-
-  border: 2px solid #999;
-  transition: 0.2s all linear;
-  margin-right: 5px;
-
-  position: relative;
-  top: 4px;
+button {
+  background-color: lightgrey;
+  color: black;
+  text-align: center;
+  padding: 5px;
 }
+legend { 
+  background-color: #000; 
+  color: #fff; 
+  padding: 3px 6px; 
+}
+
 
 input:checked {
   border: 6px solid black;
@@ -72,6 +74,7 @@ legend {
   border: 0;
   font-size: 14px;
 }
+
 
 button:hover,
 button:focus {

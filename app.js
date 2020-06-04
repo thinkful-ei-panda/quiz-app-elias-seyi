@@ -65,7 +65,6 @@ const store = {
   quizStarted: false,
   questionNumber: 0,
   score: 0,
-  answerKey: ['The atmosphere','Milky Way','Ammeter','True','H2O',]
 };
 
 
@@ -109,18 +108,40 @@ const store = {
 </form>
  */
 
+ //shows the page before we start quiz
 function generateForm() {
-  $('main').html(
-    '<main class="mainClass"><form><legend>QUESTION 1</legend><div class="questionTemplate"></div><div><button type="submit">Submit</button></div></form><p class="answers"></p></main>'
-  );
   console.log('`generateForm` ran');
+  $("header").html(
+    `<div id = "start-page">
+      <h1>Elias' and Seyi's SCIENCE QUIZ</h1>
+      <h2>Let us begin. </h2>
+  </div>`);
+
+  $("main").html(`
+  <button id = "start" type = "submit">Begin</button>`);
 }
 
 function generateQuestionTemplate() {
-  $('div.questionTemplate').html(
-    '<input type="radio" id="answerChoice1" name="quizAnswer" value="a"> <label for="answerChoice1">TEST</label>'
-  );
   console.log('`generateFieldset` ran');
+  $('main').html(
+    `<form>
+      Your score ${store.score} out of 5 <br/>
+      Question ${store.questionNumber + 1} <br/> <br/>
+
+      <fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
+      <input type="radio" id="${store.questions[store.questionNumber].answers[0]}" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
+      <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
+      <input type="radio" id="${store.questions[store.questionNumber].answers[1]}" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
+      <label for="Choice2">${store.questions[store.questionNumber].answers[1]}</label><br/>
+      <input type="radio" id="${store.questions[store.questionNumber].answers[2]}" name="Choice" value="${store.questions[store.questionNumber].answers[2]}">
+      <label for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
+      <input type="radio" id="${store.questions[store.questionNumber].answers[3]}" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
+      <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
+      <button id="submitForm">Submit</button>
+      </fieldset>
+
+    </form>`
+  );
 }
 
 function generateUserFeedback() {
@@ -143,6 +164,8 @@ function generateCorrectAnswer(){
 function renderQuiz() {
   //uses the generateHTML() function based on which question the user is at.
   console.log('`renderQuiz` ran');
+  $(`.js-quiz-app`).html(generateForm());
+  
 }
 
 function renderScore() {
@@ -168,6 +191,7 @@ function renderCompletedQuiz() {
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+
 function handleStartButton() {
   console.log('`handleStartBUtton` ran');
 }
@@ -198,13 +222,16 @@ function handleNextQuestion() {
 
 function handleNewQuiz() {
   //handles the last button after the score of the quiz is presented and all the questions have been answered.
+  //Basically works as a try again
+
+  
   console.log('`handleNewQuiz` ran');
 }
 
 /**********************ACTUAL APP FUNCTIONS ************ */
 
-function startQuiz() {
-
+function handleQuiz() {
+  renderQuiz();
 }
 
 function quizQuestions() {
@@ -220,8 +247,6 @@ function quizQuestions() {
   handleAnswerSubmission();
 }
 
-$(quizQuestions);
-
 function quizAnswers() {
   generateHTML();
   renderAnswer();
@@ -232,3 +257,5 @@ function endQuiz() {
   renderCompletedQuiz();
   handleNewQuiz();
 }
+
+$(handleQuiz);
