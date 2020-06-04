@@ -110,7 +110,7 @@ function generateForm() {
 }
 
 
-function renderQuestion() {
+function generateQuestion() {
   console.log('`renderQuestion` ran');
   $('main').html(
     `<form>
@@ -149,76 +149,65 @@ function generateCorrectAnswer(){
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 //renders the quiz
-function renderQuiz() {
-  //uses the generateHTML() function based on which question the user is at.
-  let html = '';
+function renderStart() {
+  console.log('`renderStart` ran');
+  $('.js-quiz-app').html(generateForm());
+}
 
-  if (store.quizStarted === false) {
-    $('main').html(generateForm());
-  }
-  else if(store.questionNumber >= 0 && store.questionNumber < store.questions.length) {
-    html = generateUserFeedback();
-    html += generateQuestionTemplate();
-    $('main').html(html);
-  }
-  else {
-    $('main').html(generateCorrectAnswer);
-  }
-  console.log('`renderQuiz` ran');
-  $(`.js-quiz-app`).html(generateForm());
+function renderQuestion() {
+  console.log('Rendering Question');
+  $('.js-quiz-app').html(generateQuestion());
+}
+
+function startQuiz() {
+  //uses the generateHTML() function based on which question the user is at.
+  console.log('`startQuiz` ran');
   
+  $('main').on('click', '#start', (event => {
+    event.preventDefault();
+    generateQuestion();
+  }));  
 }
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
 
-function handleStartButton() {
-  console.log('`handleStartBUtton` ran');
-}
+
 
 function handleAnswerChoice() {
   // this will have to do with the radio buttons that will have to be first rendered to then select from.
   
+  console.log('`handleAnswerChoice` ran');
+
+
   // $('#js-answer-choices').submit( event => {
   // event.preventDefault();
   // const answerChoice1 = $(event.currentTarget).find('input[name="question1"]').val();
   // });
-  console.log('`handleAnswerChoice` ran');
+ 
 }
 
-function handleAnswerSubmission() {
-  // This will handle the submisison forms that have a click event on the "Final Answer?" button.
-  
-  //$('#js-answer-choices').click( event => {
-  //  event.preventDefault();
-  //  const firstSubmit = $(event.currentTarget).find()..
-  //});
-  console.log('`handleAnswerSubmission` ran'); 
-}
 
 function handleNextQuestion() {
   console.log('`handleNextQuestion` ran');
 }
 
-function handleNewQuiz() {
+function handleEndQuiz() {
   //handles the last button after the score of the quiz is presented and all the questions have been answered.
   //Basically works as a try again
 
   
-  console.log('`handleNewQuiz` ran');
+  console.log('`handleEndQuiz` ran');
 }
 
 /**********************ACTUAL APP FUNCTIONS ************ */
 
-function handleQuiz() {
-  renderQuiz();
-}
 
 function handleQuizApp() {
-  renderQuestion();
-  generateForm();
-  handleAnswerSubmission();
+  renderStart();
+  startQuiz();
+  handleAnswerChoice();
 }
 
 $(handleQuizApp);
