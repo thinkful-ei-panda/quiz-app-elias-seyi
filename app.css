@@ -6,7 +6,7 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
-
+/*-------THIS IS THE BEGGING OF THE CSS ---*/
 * {
   box-sizing: border-box;
 }
@@ -14,7 +14,7 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
-
+/* 
 .main-nav-list {
   list-style: none;
   padding: 0;
@@ -32,24 +32,60 @@ body {
   margin: 10px 0;
   padding:10px;
 }
+*/
 
 main {
-//
+  font-size: 16px;
 }
 
-
-
-button, input[type="text"] {
-  padding: 5px;
+#questionsForm {
+  background-color: #999;
 }
 
-button:hover {
+/* ----- THIS IS THE RADIO BUTTONS STYLING ---*//*----------------*/
+
+button, input[type='radio'] {
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+input:checked {
+  border: 6px solid black;
+}
+
+button,
+legend {
+  color: white;
+  background-color: black;
+  padding: 5px 10px;
+  border-radius: 0;
+  border: 0;
+  font-size: 14px;
+}
+
+button:hover,
+button:focus {
+  color: #999;
   cursor: pointer;
 }
 
-#shopping-list-item {
-  width: 250px;
+button:active {
+  background-color: white;
+  color: black;
+  outline: 1px solid black;
 }
+
+/*----- END OF THE RADIO BUTTONS STYLING----------*/
 
 .container {
   max-width: 600px;

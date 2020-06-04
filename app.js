@@ -106,17 +106,44 @@ const store = {
 </form>
  */
 
+function generateForm() {
+  $('main').html(
+    '<main class="mainClass"><form><legend>QUESTION 1</legend><div class="questionTemplate"></div><div><button type="submit">Submit</button></div></form><p class="answers"></p></main>'
+  );
+  console.log('`generateForm` ran');
+}
+
+function generateQuestionTemplate() {
+  $('div.questionTemplate').html(
+    '<input type="radio" id="answerChoice1" name="quizAnswer" value="a"> <label for="answerChoice1">TEST</label>'
+  );
+  console.log('`generateFieldset` ran');
+}
+
+function generateUserFeedback() {
+  $('h1').html(
+    '<h1>THIS IS QUESTION 1 of 5 and your score is 0 correct 0 incorrect'
+  );
+  console.log('`generateH1` ran');
+}
+
+function generateCorrectAnswer(){
+  $('p.answers').html(
+    '<p class="answers"> QUESTION 1 ANSWERS</p>'
+  );
+}
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
-function generateHTML() {
-  //  so this generates the html sections like <form> <ul> <li> <a> <h1> <h2> <p> 
-  console.log('`generateHTML` ran');
-}
+
 //renders the quiz
 function renderQuiz() {
   //uses the generateHTML() function based on which question the user is at.
   console.log('`renderQuiz` ran');
+}
+
+function renderScore() {
+  console.log('`renderScore` ran');
 }
 
 //renders the question
@@ -126,9 +153,21 @@ function renderQuestion() {
   console.log('`renderQuestion` ran');
 }
 
+function renderAnswer() {
+  //somehow will have to verify the selected choice is the correct answer the question.
+  console.log('`renderAnswer` ran');
+}
+
+function renderCompletedQuiz() {
+  console.log('`renderCompletedQuiz` ran');
+}
+
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+function handleStartButton() {
+  console.log('`handleStartBUtton` ran');
+}
 
 function handleAnswerChoice() {
   // this will have to do with the radio buttons that will have to be first rendered to then select from.
@@ -150,12 +189,41 @@ function handleAnswerSubmission() {
   console.log('`handleAnswerSubmission` ran'); 
 }
 
-function handleIncorrectSubmission() {
-  //somehow will have to verify the selected choice is the correct answer the question.
-  console.log('`handleIncorrectSubmission` ran')
+function handleNextQuestion() {
+  console.log('`handleNextQuestion` ran');
 }
 
 function handleNewQuiz() {
   //handles the last button after the score of the quiz is presented and all the questions have been answered.
   console.log('`handleNewQuiz` ran');
+}
+
+/**********************ACTUAL APP FUNCTIONS ************ */
+
+function startQuiz() {
+
+}
+
+function quizQuestions() {
+  generateForm();
+  generateQuestionTemplate();
+  generateUserFeedback();
+  generateCorrectAnswer();
+  renderQuestion();
+  handleStartButton();
+  renderQuestion();
+  renderScore();
+  handleAnswerChoice();
+  handleAnswerSubmission();
+}
+
+function quizAnswers() {
+  generateHTML();
+  renderAnswer();
+  handleNextQuestion();
+}
+
+function endQuiz() {
+  renderCompletedQuiz();
+  handleNewQuiz();
 }
