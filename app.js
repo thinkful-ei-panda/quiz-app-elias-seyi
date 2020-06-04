@@ -47,6 +47,8 @@ const store = {
       answers: [
         'True',
         'False',
+        'A and B',
+        'All of the Above'
       ],
       correctAnswer: 'True'
     },
@@ -90,21 +92,7 @@ const store = {
 
 /*
 <form> 
-  <p>Please select your preferred contact method:</p>
-  <div>
-    <input type="radio" id="contactChoice1"
-           name="contact" value="email">
-    <label for="contactChoice1">Email</label>
-    <input type="radio" id="contactChoice2"
-           name="contact" value="phone">
-    <label for="contactChoice2">Phone</label>
-    <input type="radio" id="contactChoice3"
-           name="contact" value="mail">
-    <label for="contactChoice3">Mail</label>
-  </div>
-  <div>
-    <button type="submit">Submit</button>
-  </div>
+ 
 </form>
  */
 
@@ -119,6 +107,24 @@ function generateForm() {
 
   $("main").html(`
   <button id = "start" type = "submit">Begin</button>`);
+}
+
+function generateAnswerChoices() {
+  let questionNumber = store.questions[store.questionNumber];
+  return `
+    <input type="radio" id="answerChoice1" name="quizAnswer" value="a"> 
+    <label for="answerChoice1">${questionNumber.answer[1]}</label>
+
+    <input type="radio" id="answerChoice2" name="quizAnswer" value="b">
+    <label for="answerChoice2">${questionNumber.answer[2]}</label>
+
+    <input type="radio" id="answerChoice3" name="quizAnswer" value="c">
+    <label for="answerChoice3">${questionNumber.answer[3]}</label>
+
+    <input type="radio" id="answerChoice4" name="quizAnswer" value="d">
+    <label for="answerChoice4">${questionNumber.answer[4]}</label>
+    </div>
+  `;
 }
 
 function generateQuestionTemplate() {
@@ -145,9 +151,7 @@ function generateQuestionTemplate() {
 }
 
 function generateUserFeedback() {
-  $('h1').html(
-    '<h1>THIS IS QUESTION 1 of 5 and your score is 0 correct 0 incorrect'
-  );
+  
   console.log('`generateH1` ran');
 }
 
@@ -156,6 +160,7 @@ function generateCorrectAnswer(){
     '<p class="answers"> QUESTION 1 ANSWERS</p>'
   );
 }
+
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
@@ -163,29 +168,22 @@ function generateCorrectAnswer(){
 //renders the quiz
 function renderQuiz() {
   //uses the generateHTML() function based on which question the user is at.
+  let html = '';
+
+  if (store.quizStarted === false) {
+    $('main').html(generateForm());
+  }
+  else if(store.questionNumber >= 0 && store.questionNumber < store.questions.length) {
+    html = generateUserFeedback();
+    html += generateQuestionTemplate();
+    $('main').html(html);
+  }
+  else {
+    $('main').html(generateCorrectAnswer);
+  }
   console.log('`renderQuiz` ran');
   $(`.js-quiz-app`).html(generateForm());
   
-}
-
-function renderScore() {
-  console.log('`renderScore` ran');
-}
-
-//renders the question
-function renderQuestion() {
-  //this will have to use the generateHTML() function to renderQuestions which will come from the store.
-  // $(')
-  console.log('`renderQuestion` ran');
-}
-
-function renderAnswer() {
-  //somehow will have to verify the selected choice is the correct answer the question.
-  console.log('`renderAnswer` ran');
-}
-
-function renderCompletedQuiz() {
-  console.log('`renderCompletedQuiz` ran');
 }
 
 /********** EVENT HANDLER FUNCTIONS **********/
@@ -234,28 +232,11 @@ function handleQuiz() {
   renderQuiz();
 }
 
-function quizQuestions() {
+function handleQuizApp() {
+  renderQuestion();
   generateForm();
-  generateQuestionTemplate();
-  generateUserFeedback();
-  generateCorrectAnswer();
-  renderQuestion();
-  handleStartButton();
-  renderQuestion();
-  renderScore();
-  handleAnswerChoice();
   handleAnswerSubmission();
 }
 
-function quizAnswers() {
-  generateHTML();
-  renderAnswer();
-  handleNextQuestion();
-}
+$(handleQuizApp);
 
-function endQuiz() {
-  renderCompletedQuiz();
-  handleNewQuiz();
-}
-
-$(handleQuiz);
