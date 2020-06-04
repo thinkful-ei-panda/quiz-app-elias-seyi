@@ -151,21 +151,19 @@ function renderQuestion() {
   $('.js-quiz-app').html(generateQuestion());
 }
 
-function startQuiz() {
-  //uses the generateHTML() function based on which question the user is at.
-  console.log('`startQuiz` ran');
-  
-  $('main').on('click', '#start', (event => {
-    event.preventDefault();
-    renderQuestion();
-  }));  
-}
-
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
 
+function startQuiz() {
+  //uses the generateHTML() function based on which question the user is at.
+  console.log('`startQuiz` ran');
 
+  $('main').on('click', '#start', (event => {
+    event.preventDefault();
+    renderQuestion();
+  }));
+}
 
 function handleAnswerChoice() {
   // this will have to do with the radio buttons that will have to be first rendered to then select from.
@@ -199,8 +197,9 @@ function handleEndQuiz() {
 function handleQuizApp() {
   renderStart();
   startQuiz();
-
+  handleNextQuestion();
   handleAnswerChoice();
+  handleEndQuiz();
 }
 
 $(handleQuizApp);
