@@ -105,6 +105,7 @@ function generateForm() {
 function generateQuestion() {
   console.log('`renderQuestion` ran');
   $('main').html(
+    
     `<form>
       Your score ${store.score} out of 5 <br/>
       Question ${store.questionNumber + 1} <br/> <br/>
@@ -125,15 +126,57 @@ function generateQuestion() {
   );
 }
 
-function generateUserFeedback() {
-  
-  console.log('`generateH1` ran');
+
+function generateCorrect() {
+  store.score += 1;
+  store.questionNumber += 1;
+
+  if (store.questionNumber < 5) {
+
+    $('main').html(
+      `<p>Correct! Your current score is ${store.score} out of 5</p>
+      <button type = "submit" id = "next">Continue</button>`);
+    
+
+    
+  } else {
+
+    $('main').html(
+      `<p>Correct! Your current score is ${store.score} out of 5</p> 
+      `);
+    
+    $('main').html(
+      `<button type = "submit" id = "next">Continue</button>`
+    );
+  }
+
 }
 
-function generateCorrectAnswer(){
-  $('p.answers').html(
-    '<p class="answers"> QUESTION 1 ANSWERS</p>'
-  );
+function generateWrong() {
+  store.questionNumber += 1;
+
+  const correct = store.questions[store.questionNumber].correctAnswer;
+  let answer = $(`input[name = Choice]:checked`).val();
+  
+  if (store.questionNumber < 5) {
+
+    $('main').html(`
+    <h1>You current score ${store.score} out of 5</h1><br/>
+    <p>Incorrect.  Your answer was ${answer} while the correct answer was ${correct}. </p> 
+    `);
+
+    $('main').html(
+      `<button type = "submit" id = "next">Continue</button>`
+    );
+
+  } else {
+
+    $('main').html(`
+    <p>You current score ${store.score} out of 5</p><br/>
+    <p>Incorrect.  Your answer was ${answer} while the correct answer was ${correct}. </p> 
+    <button type="submit" id="finish">Complete</button>`);
+
+  }
 }
 
 /********** RENDER FUNCTION(S) **********/
@@ -162,12 +205,28 @@ function startQuiz() {
   $('main').on('click', '#start', (event => {
     event.preventDefault();
     renderQuestion();
+    $('header').html('<h2></h2>')
   }));
 }
 
 function handleAnswerChoice() {
   // this will have to do with the radio buttons that will have to be first rendered to then select from.
-  
+  console.log('`generateUserFeedback` ran');
+  $('main').on('click', '#submitForm', event => {
+    event.preventDefault();
+
+    const correct = store.questions[store.questionNumber].correctAnswer;
+
+    let answer = $('input[name = Choice]:checked').val();
+
+    if (answer === correct) {
+      generateCorrect();
+    } else if ((answer !== undefined) && (answer !== correct)) {
+      generateWrong();
+    } else {
+      renderQuestion();
+    }
+  });
   console.log('`handleAnswerChoice` ran');
 
 
@@ -181,6 +240,11 @@ function handleAnswerChoice() {
 
 function handleNextQuestion() {
   console.log('`handleNextQuestion` ran');
+
+  $('main').on('click', '#next', event => {
+    event.preventDefault();
+    renderQuestion();
+  });
 }
 
 function handleEndQuiz() {
@@ -197,8 +261,8 @@ function handleEndQuiz() {
 function handleQuizApp() {
   renderStart();
   startQuiz();
-  handleNextQuestion();
   handleAnswerChoice();
+  handleNextQuestion();
   handleEndQuiz();
 }
 
