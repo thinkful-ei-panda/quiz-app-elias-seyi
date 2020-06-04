@@ -145,9 +145,9 @@ function generateUserFeedback() {
 }
 
 function generateCorrectAnswer(){
-  $('p.answers').html(
-    '<p class="answers"> QUESTION 1 ANSWERS</p>'
-  );
+  return `
+    <div class="resultsScreen">
+      <form id="restart-quiz">`;
 }
 
 /********** RENDER FUNCTION(S) **********/
