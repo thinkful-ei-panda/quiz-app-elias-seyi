@@ -88,14 +88,6 @@ const store = {
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
-// These functions return HTML templates
-
-/*
-<form> 
- 
-</form>
- */
-
  //shows the page before we start quiz
 function generateForm() {
   console.log('`generateForm` ran');
@@ -165,7 +157,7 @@ function startQuiz() {
   
   $('main').on('click', '#start', (event => {
     event.preventDefault();
-    generateQuestion();
+    renderQuestion();
   }));  
 }
 
@@ -207,6 +199,7 @@ function handleEndQuiz() {
 function handleQuizApp() {
   renderStart();
   startQuiz();
+
   handleAnswerChoice();
 }
 
