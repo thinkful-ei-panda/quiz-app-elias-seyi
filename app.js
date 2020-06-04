@@ -1,6 +1,9 @@
 /**
  * Example store structure
  */
+
+
+
 'use strict';
 const store = {
 
