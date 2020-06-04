@@ -128,8 +128,8 @@ function generateQuestion() {
 
 
 function generateCorrect() {
-  store.score += 1;
-  store.questionNumber += 1;
+  store.score ++;
+  store.questionNumber ++;
 
   if (store.questionNumber < 5) {
 
@@ -143,17 +143,14 @@ function generateCorrect() {
 
     $('main').html(
       `<p>Correct! Your current score is ${store.score} out of 5</p> 
+      <button type = "submit" id = "finish">Complete</button>
       `);
-    
-    $('main').html(
-      `<button type = "submit" id = "next">Continue</button>`
-    );
   }
 
 }
 
 function generateWrong() {
-  store.questionNumber += 1;
+  store.questionNumber ++;
 
   const correct = store.questions[store.questionNumber].correctAnswer;
   let answer = $(`input[name = Choice]:checked`).val();
@@ -163,11 +160,10 @@ function generateWrong() {
     $('main').html(`
     <h1>You current score ${store.score} out of 5</h1><br/>
     <p>Incorrect.  Your answer was ${answer} while the correct answer was ${correct}. </p> 
+    <button type = "submit" id = "next">Continue</button>
     `);
 
-    $('main').html(
-      `<button type = "submit" id = "next">Continue</button>`
-    );
+
 
   } else {
 
@@ -205,7 +201,7 @@ function startQuiz() {
   $('main').on('click', '#start', (event => {
     event.preventDefault();
     renderQuestion();
-    $('header').html('<h2></h2>')
+    $('header').html('<h2></h2>');
   }));
 }
 
@@ -250,7 +246,15 @@ function handleNextQuestion() {
 function handleEndQuiz() {
   //handles the last button after the score of the quiz is presented and all the questions have been answered.
   //Basically works as a try again
+  $('main').on('click', '#finish', (event => {
+    event.preventDefault();
 
+    $('header.html').html(`
+      <h1>You're done!</h1>
+      <p>Your score is a ${store.score} out of 5</p> 
+      <button type = "submit" id = "start">Try again?</button>
+    `);
+  }));
   
   console.log('`handleEndQuiz` ran');
 }
