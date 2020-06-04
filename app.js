@@ -217,6 +217,8 @@ function quizQuestions() {
   handleAnswerSubmission();
 }
 
+$(quizQuestions);
+
 function quizAnswers() {
   generateHTML();
   renderAnswer();
