@@ -89,21 +89,146 @@ const store = {
 
 // These functions return HTML templates
 
+/*
+<form> 
+  <p>Please select your preferred contact method:</p>
+  <div>
+    <input type="radio" id="contactChoice1"
+           name="contact" value="email">
+    <label for="contactChoice1">Email</label>
+    <input type="radio" id="contactChoice2"
+           name="contact" value="phone">
+    <label for="contactChoice2">Phone</label>
+    <input type="radio" id="contactChoice3"
+           name="contact" value="mail">
+    <label for="contactChoice3">Mail</label>
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+ */
 
+function generateForm() {
+  $('main').html(
+    '<main class="mainClass"><form><legend>QUESTION 1</legend><div class="questionTemplate"></div><div><button type="submit">Submit</button></div></form><p class="answers"></p></main>'
+  );
+  console.log('`generateForm` ran');
+}
+
+function generateQuestionTemplate() {
+  $('div.questionTemplate').html(
+    '<input type="radio" id="answerChoice1" name="quizAnswer" value="a"> <label for="answerChoice1">TEST</label>'
+  );
+  console.log('`generateFieldset` ran');
+}
+
+function generateUserFeedback() {
+  $('h1').html(
+    '<h1>THIS IS QUESTION 1 of 5 and your score is 0 correct 0 incorrect'
+  );
+  console.log('`generateH1` ran');
+}
+
+function generateCorrectAnswer(){
+  $('p.answers').html(
+    '<p class="answers"> QUESTION 1 ANSWERS</p>'
+  );
+}
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 //renders the quiz
 function renderQuiz() {
+  //uses the generateHTML() function based on which question the user is at.
   console.log('`renderQuiz` ran');
+}
+
+function renderScore() {
+  console.log('`renderScore` ran');
 }
 
 //renders the question
 function renderQuestion() {
+  //this will have to use the generateHTML() function to renderQuestions which will come from the store.
+  // $(')
   console.log('`renderQuestion` ran');
+}
+
+function renderAnswer() {
+  //somehow will have to verify the selected choice is the correct answer the question.
+  console.log('`renderAnswer` ran');
+}
+
+function renderCompletedQuiz() {
+  console.log('`renderCompletedQuiz` ran');
 }
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+function handleStartButton() {
+  console.log('`handleStartBUtton` ran');
+}
+
+function handleAnswerChoice() {
+  // this will have to do with the radio buttons that will have to be first rendered to then select from.
+  
+  // $('#js-answer-choices').submit( event => {
+  // event.preventDefault();
+  // const answerChoice1 = $(event.currentTarget).find('input[name="question1"]').val();
+  // });
+  console.log('`handleAnswerChoice` ran');
+}
+
+function handleAnswerSubmission() {
+  // This will handle the submisison forms that have a click event on the "Final Answer?" button.
+  
+  //$('#js-answer-choices').click( event => {
+  //  event.preventDefault();
+  //  const firstSubmit = $(event.currentTarget).find()..
+  //});
+  console.log('`handleAnswerSubmission` ran'); 
+}
+
+function handleNextQuestion() {
+  console.log('`handleNextQuestion` ran');
+}
+
+function handleNewQuiz() {
+  //handles the last button after the score of the quiz is presented and all the questions have been answered.
+  console.log('`handleNewQuiz` ran');
+}
+
+/**********************ACTUAL APP FUNCTIONS ************ */
+
+function startQuiz() {
+
+}
+
+function quizQuestions() {
+  generateForm();
+  generateQuestionTemplate();
+  generateUserFeedback();
+  generateCorrectAnswer();
+  renderQuestion();
+  handleStartButton();
+  renderQuestion();
+  renderScore();
+  handleAnswerChoice();
+  handleAnswerSubmission();
+}
+
+$(quizQuestions);
+
+function quizAnswers() {
+  generateHTML();
+  renderAnswer();
+  handleNextQuestion();
+}
+
+function endQuiz() {
+  renderCompletedQuiz();
+  handleNewQuiz();
+}
