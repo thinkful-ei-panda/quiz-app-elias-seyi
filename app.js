@@ -109,26 +109,9 @@ function generateForm() {
   <button id = "start" type = "submit">Begin</button>`);
 }
 
-function generateAnswerChoices() {
-  let questionNumber = store.questions[store.questionNumber];
-  return `
-    <input type="radio" id="answerChoice1" name="quizAnswer" value="a"> 
-    <label for="answerChoice1">${questionNumber.answer[1]}</label>
 
-    <input type="radio" id="answerChoice2" name="quizAnswer" value="b">
-    <label for="answerChoice2">${questionNumber.answer[2]}</label>
-
-    <input type="radio" id="answerChoice3" name="quizAnswer" value="c">
-    <label for="answerChoice3">${questionNumber.answer[3]}</label>
-
-    <input type="radio" id="answerChoice4" name="quizAnswer" value="d">
-    <label for="answerChoice4">${questionNumber.answer[4]}</label>
-    </div>
-  `;
-}
-
-function generateQuestionTemplate() {
-  console.log('`generateFieldset` ran');
+function renderQuestion() {
+  console.log('`renderQuestion` ran');
   $('main').html(
     `<form>
       Your score ${store.score} out of 5 <br/>
