@@ -129,7 +129,9 @@ function generateQuestion() {
 
 function generateCorrect() {
   store.score ++;
-  store.questionNumber ++;
+  store.questionNumber++;
+  
+  console.log(store.questionNumber)
 
   if (store.questionNumber < 5) {
 
@@ -151,6 +153,8 @@ function generateCorrect() {
 
 function generateWrong() {
   store.questionNumber ++;
+
+  console.log(store.questionNumber)
 
   const correct = store.questions[store.questionNumber].correctAnswer;
   let answer = $(`input[name = Choice]:checked`).val();
@@ -254,6 +258,9 @@ function handleEndQuiz() {
       <p>Your score is a ${store.score} out of 5</p> 
       <button type = "submit" id = "start">Try again?</button>
     `);
+
+    store.score = 0;
+    store.questionNumber = 0;
   }));
   
   console.log('`handleEndQuiz` ran');
