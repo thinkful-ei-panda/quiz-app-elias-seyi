@@ -130,8 +130,6 @@ function generateQuestion() {
 function generateCorrect() {
   
   
-  console.log(store.questionNumber);
-
   if (store.questionNumber  < store.questions.length - 1) {
     store.score += 1;
     store.questionNumber += 1;
@@ -158,8 +156,11 @@ function generateWrong() {
 =======
   
 
+<<<<<<< HEAD
   console.log(store.questionNumber)
 >>>>>>> 900ef71b004bde23214609c433a415b2a7c8c771
+=======
+>>>>>>> aef302c1a0a77494515488310b555a0f2effa4b5
 
   const correct = store.questions[store.questionNumber].correctAnswer;
   let answer = $(`input[name = Choice]:checked`).val();
@@ -264,8 +265,12 @@ function handleEndQuiz() {
 
     $('header').html(`
       <h1>You're done!</h1>
-      <button type = "submit" id = "start">Try again?</button>
     `);
+    $('main').html(`
+      <p>You scored a ${store.score} out of 5</p><br/>
+      <button type = "submit" id = "start">Try again?</button>
+
+    `)
 
     store.score = 0;
     store.questionNumber = 0;
