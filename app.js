@@ -128,21 +128,22 @@ function generateQuestion() {
 
 
 function generateCorrect() {
-  store.score ++;
-  store.questionNumber++;
+  
   
   console.log(store.questionNumber)
 
-  if (store.questionNumber < 5) {
-
+  if (store.questionNumber  < store.questions.length) {
+    store.score += 1;
+    store.questionNumber += 1;
     $('main').html(
       `<p>Correct! Your current score is ${store.score} out of 5</p>
       <button type = "submit" id = "next">Continue</button>`);
     
-
+      
     
   } else {
-
+    store.score += 1;
+    store.questionNumber += 1;
     $('main').html(
       `<p>Correct! Your current score is ${store.score} out of 5</p> 
       <button type = "submit" id = "finish">Complete</button>
@@ -152,14 +153,15 @@ function generateCorrect() {
 }
 
 function generateWrong() {
-  store.questionNumber ++;
+  
 
   console.log(store.questionNumber)
 
   const correct = store.questions[store.questionNumber].correctAnswer;
   let answer = $(`input[name = Choice]:checked`).val();
   
-  if (store.questionNumber < 5) {
+  if (store.questionNumber < store.questions.length) {
+    store.questionNumber += 1;
 
     $('main').html(`
     <h1>You current score ${store.score} out of 5</h1><br/>
@@ -170,6 +172,7 @@ function generateWrong() {
 
 
   } else {
+    store.questionNumber += 1;
 
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
@@ -245,6 +248,7 @@ function handleNextQuestion() {
     event.preventDefault();
     renderQuestion();
   });
+  
 }
 
 function handleEndQuiz() {
@@ -261,10 +265,13 @@ function handleEndQuiz() {
 
     store.score = 0;
     store.questionNumber = 0;
+    console.log('`handleEndQuiz` ran');
+
   }));
   
-  console.log('`handleEndQuiz` ran');
 }
+
+
 
 /**********************ACTUAL APP FUNCTIONS ************ */
 
