@@ -38,11 +38,6 @@ body {
 */
 
 
-
-#questionsForm {
-  background-color: #999;
-}
-
 /* ----- THIS IS THE RADIO BUTTONS STYLING ---*//*----------------*/
 
 button {
@@ -69,7 +64,7 @@ legend {
   padding: 5px 10px;
   border-radius: 0;
   border: 0;
-  font-size: 14px;
+  font-size: 21px;
 }
 
 
