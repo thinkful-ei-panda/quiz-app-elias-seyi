@@ -128,21 +128,22 @@ function generateQuestion() {
 
 
 function generateCorrect() {
-  store.score ++;
-  store.questionNumber++;
+  
   
   console.log(store.questionNumber);
 
-  if (store.questionNumber < 5) {
-
+  if (store.questionNumber  < store.questions.length - 1) {
+    store.score += 1;
+    store.questionNumber += 1;
     $('main').html(
       `<p>Correct! Your current score is ${store.score} out of 5</p>
       <button type = "submit" id = "next">Continue</button>`);
     
-
+      
     
   } else {
-
+    store.score += 1;
+    store.questionNumber += 1;
     $('main').html(
       `<p>Correct! Your current score is ${store.score} out of 5</p> 
       <button type = "submit" id = "finish">Complete</button>
@@ -152,12 +153,19 @@ function generateCorrect() {
 }
 
 function generateWrong() {
+<<<<<<< HEAD
   console.log(store.questionNumber);
+=======
+  
+
+  console.log(store.questionNumber)
+>>>>>>> 900ef71b004bde23214609c433a415b2a7c8c771
 
   const correct = store.questions[store.questionNumber].correctAnswer;
   let answer = $(`input[name = Choice]:checked`).val();
   
-  if (store.questionNumber < 5) {
+  if (store.questionNumber < store.questions.length - 1) {
+    store.questionNumber += 1;
 
     $('main').html(`
     <h1>You current score ${store.score} out of 5</h1><br/>
@@ -168,6 +176,7 @@ function generateWrong() {
 
 
   } else {
+    store.questionNumber += 1;
 
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
@@ -244,6 +253,7 @@ function handleNextQuestion() {
     event.preventDefault();
     renderQuestion();
   });
+  
 }
 
 function handleEndQuiz() {
@@ -251,19 +261,21 @@ function handleEndQuiz() {
   //Basically works as a try again
   $('main').on('click', '#finish', (event => {
     event.preventDefault();
-    console.log('User completed 5 questions');
-    $('main').html(`
+
+    $('header').html(`
       <h1>You're done!</h1>
-      <p>Your score is a ${store.score} out of 5</p> 
       <button type = "submit" id = "start">Try again?</button>
     `);
 
     store.score = 0;
     store.questionNumber = 0;
+    console.log('`handleEndQuiz` ran');
+
   }));
   
-  console.log('`handleEndQuiz` ran');
 }
+
+
 
 /**********************ACTUAL APP FUNCTIONS ************ */
 
