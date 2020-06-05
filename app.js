@@ -132,7 +132,7 @@ function generateCorrect() {
   
   console.log(store.questionNumber)
 
-  if (store.questionNumber  < store.questions.length) {
+  if (store.questionNumber  < store.questions.length - 1) {
     store.score += 1;
     store.questionNumber += 1;
     $('main').html(
@@ -160,7 +160,7 @@ function generateWrong() {
   const correct = store.questions[store.questionNumber].correctAnswer;
   let answer = $(`input[name = Choice]:checked`).val();
   
-  if (store.questionNumber < store.questions.length) {
+  if (store.questionNumber < store.questions.length - 1) {
     store.questionNumber += 1;
 
     $('main').html(`
@@ -257,9 +257,8 @@ function handleEndQuiz() {
   $('main').on('click', '#finish', (event => {
     event.preventDefault();
 
-    $('header.html').html(`
+    $('header').html(`
       <h1>You're done!</h1>
-      <p>Your score is a ${store.score} out of 5</p> 
       <button type = "submit" id = "start">Try again?</button>
     `);
 
