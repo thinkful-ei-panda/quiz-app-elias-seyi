@@ -131,7 +131,7 @@ function generateCorrect() {
   store.score ++;
   store.questionNumber++;
   
-  console.log(store.questionNumber)
+  console.log(store.questionNumber);
 
   if (store.questionNumber < 5) {
 
@@ -152,9 +152,7 @@ function generateCorrect() {
 }
 
 function generateWrong() {
-  store.questionNumber ++;
-
-  console.log(store.questionNumber)
+  console.log(store.questionNumber);
 
   const correct = store.questions[store.questionNumber].correctAnswer;
   let answer = $(`input[name = Choice]:checked`).val();
@@ -177,6 +175,7 @@ function generateWrong() {
     <button type="submit" id="finish">Complete</button>`);
 
   }
+  store.questionNumber ++;
 }
 
 /********** RENDER FUNCTION(S) **********/
@@ -252,8 +251,8 @@ function handleEndQuiz() {
   //Basically works as a try again
   $('main').on('click', '#finish', (event => {
     event.preventDefault();
-
-    $('header.html').html(`
+    console.log('User completed 5 questions');
+    $('main').html(`
       <h1>You're done!</h1>
       <p>Your score is a ${store.score} out of 5</p> 
       <button type = "submit" id = "start">Try again?</button>
