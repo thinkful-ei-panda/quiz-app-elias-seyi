@@ -70,46 +70,15 @@ legend {
 
 button:hover,
 button:focus {
-  color: #999;
+  color: #6489ef;
   cursor: pointer;
 }
 
 button:active {
   background-color: white;
-  color: black;
+  color: #999;
   outline: 1px solid black;
 }
-
-/*----- END OF THE RADIO BUTTONS STYLING----------*/
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.shopping-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.shopping-list > li {
-  margin-bottom: 20px;
-  border: 1px solid grey;
-  padding: 20px;
-}
-
-.shopping-item {
-  display: block;
-  color: grey;
-  font-style: italic;
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-.shopping-item__checked {
-  text-decoration: line-through;
-}
-
 
 /* desktop view  */
 

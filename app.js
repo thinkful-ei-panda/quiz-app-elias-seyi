@@ -88,7 +88,7 @@ const store = {
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
- //shows the page before we start quiz
+//shows the page before we start quiz
 function generateForm() {
   console.log('`generateForm` ran');
   $("header").html(
@@ -151,19 +151,8 @@ function generateCorrect() {
 }
 
 function generateWrong() {
-<<<<<<< HEAD
-  console.log(store.questionNumber);
-=======
-  
-
-<<<<<<< HEAD
-  console.log(store.questionNumber)
->>>>>>> 900ef71b004bde23214609c433a415b2a7c8c771
-=======
->>>>>>> aef302c1a0a77494515488310b555a0f2effa4b5
-
   const correct = store.questions[store.questionNumber].correctAnswer;
-  let answer = $(`input[name = Choice]:checked`).val();
+  let answer = $('input[name = Choice]:checked').val();
   
   if (store.questionNumber < store.questions.length - 1) {
     store.questionNumber += 1;
@@ -171,7 +160,7 @@ function generateWrong() {
     $('main').html(`
     <h1>You current score ${store.score} out of 5</h1><br/>
     <p>Incorrect.  Your answer was ${answer} while the correct answer was ${correct}. </p> 
-    <button type = "submit" id = "next">Continue</button>
+    <button type = "submit" id ="next" >Continue</button>
     `);
 
 
@@ -185,7 +174,7 @@ function generateWrong() {
     <button type="submit" id="finish">Complete</button>`);
 
   }
-  store.questionNumber ++;
+  //store.questionNumber ++;
 }
 
 /********** RENDER FUNCTION(S) **********/
@@ -270,7 +259,7 @@ function handleEndQuiz() {
       <p>You scored a ${store.score} out of 5</p><br/>
       <button type = "submit" id = "start">Try again?</button>
 
-    `)
+    `);
 
     store.score = 0;
     store.questionNumber = 0;
