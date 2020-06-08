@@ -1,12 +1,9 @@
-/* Your styles should be mobile-first and responsive */
-
-/** 
-  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
-  *
-  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
-  *
+/*
+#193940 dark blue
+orange: #D48F4F
+pink: #C9879D
+green: #7C8B65
 */
-/*-------THIS IS THE BEGGING OF THE CSS ---*/
 
 
 * {
@@ -16,69 +13,68 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-}
-/* 
-.main-nav-list {
-  list-style: none;
-  padding: 0;
-}
-.main-nav-list-item {
-  padding: .7rem 0;
-  text-align:center;
-  background-color: lime;
-  border: 1px solid #000;
+  color: #fff;
+  margin: 0;
+  background-image: url("funQuizPic.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:  100vh;
 }
 
-.box {
-  background-color: pink;
-  border:1px solid blue;
-  margin: 10px 0;
-  padding:10px;
+/* .group img {
+  width: 100%;
+  align-content: center;
 }
-*/
+
+.main {
+  color: #000;
+} */
+
+.group {
+  display: flex;
+  flex-direction: column;
+  margin: 6px;
+}
+
+.start-page {
+  flex: 1;
+}
+
+#start {
+  margin-top: 100px;
+}
 
 
-/* ----- THIS IS THE RADIO BUTTONS STYLING ---*//*----------------*/
+legend { 
+  background-color: #193940; 
+  color: #fff; 
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 32px;
+  border: 2px solid; 
+}
 
 button {
-  background-color: lightgrey;
-  color: black;
-  text-align: center;
-  padding: 5px;
+  padding: 15px 25px;
+  background-color: #7C8B65;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 28px;
+  border: 1px solid;
 }
-legend { 
-  background-color: #000; 
-  color: #fff; 
-  padding: 3px 6px; 
-}
-
-
-input:checked {
-  border: 6px solid black;
-}
-
-button,
-legend {
-  color: white;
-  background-color: black;
-  padding: 5px 10px;
-  border-radius: 0;
-  border: 0;
-  font-size: 30px;
-}
-
 
 button:hover,
 button:focus {
-  color: #6489ef;
+  color: #fff;
+  background-color: #647051;
   cursor: pointer;
 }
 
-button:active {
+/* button:active {
   background-color: white;
-  color: #999;
+  color: #000;
   outline: 1px solid black;
-}
+} */
 
 /* desktop view  */
 
@@ -96,7 +92,6 @@ button:active {
     margin-left: 25%;
     margin-right: 25%;
   }
-
 
   main {
     font-size: 16pt;

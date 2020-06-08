@@ -1,15 +1,4 @@
-/**
- * Example store structure
- */
-
-
-
-'use strict';
 const store = {
-
-  // 5 or more questions are required
-
-  //create answers array and answer key array
   questions: [
     {
       question: 'Why is the sky blue?',
@@ -70,59 +59,45 @@ const store = {
 };
 
 
-
-/**
- * 
- * Technical requirements:
- * 
- * Your app should include a render() function, that regenerates the view each time the store is updated. 
- * See your course material, consult your instructor, and reference the slides for more details.
- *
- * NO additional HTML elements should be added to the index.html file.
- *
- * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
- *
- * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
- * 
- */
-
-/********** TEMPLATE GENERATION FUNCTIONS **********/
-
-//shows the page before we start quiz
 function generateForm() {
   console.log('`generateForm` ran');
-  $("header").html(
-    `<div id = "start-page">
-      <h1>Elias' and Seyi's SCIENCE QUIZ</h1>
-      <h2>Let us begin. </h2>
-  </div>`);
-
-  $("main").html(`
-  <button id = "start" type = "submit">Begin</button>`);
+  $('main').html(`
+    <main class="group">
+      <div class="start-page">
+        <h1>Elias' and Seyi's SCIENCE QUIZ</h1>
+        
+        <h2>Let us begin. </h2>
+        <button id = "start" type = "submit">Begin</button>
+      </div>
+      
+    </main>
+  `);
 }
 
 
 function generateQuestion() {
   console.log('`renderQuestion` ran');
-  $('main').html(
-    
-    `<form>
-      Your score ${store.score} out of 5 <br/>
-      Question ${store.questionNumber + 1} <br/> <br/>
+  $('main').html(`
+    <main class="group">
+      <div class="start-page">
+        <form >
+          Your score ${store.score} out of 5 <br/>
+          Question ${store.questionNumber + 1} <br/> <br/>
 
-      <fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
-      <input type="radio" id="${store.questions[store.questionNumber].answers[0]}" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
-      <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
-      <input type="radio" id="${store.questions[store.questionNumber].answers[1]}" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
-      <label for="Choice2">${store.questions[store.questionNumber].answers[1]}</label><br/>
-      <input type="radio" id="${store.questions[store.questionNumber].answers[2]}" name="Choice" value="${store.questions[store.questionNumber].answers[2]}">
-      <label for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
-      <input type="radio" id="${store.questions[store.questionNumber].answers[3]}" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
-      <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
-      <button id="submitForm">Submit</button>
-      </fieldset>
-
-    </form>`
+          <fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
+          <input type="radio" id="${store.questions[store.questionNumber].answers[0]}" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
+          <label id="answer-choices" for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
+          <input type="radio" id="${store.questions[store.questionNumber].answers[1]}" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
+          <label id="answer-choices" for="Choice2">${store.questions[store.questionNumber].answers[1]}</label><br/>
+          <input type="radio" id="${store.questions[store.questionNumber].answers[2]}" name="Choice" value="${store.questions[store.questionNumber].answers[2]}">
+          <label id="answer-choices" for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
+          <input type="radio" id="${store.questions[store.questionNumber].answers[3]}" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
+          <label id="answer-choices" for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
+          <button id="submitForm">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+    </main>`
   );
 }
 
@@ -134,8 +109,8 @@ function generateCorrect() {
     store.score += 1;
     store.questionNumber += 1;
     $('main').html(
-      `<p>Correct! Your current score is ${store.score} out of 5</p>
-      <button type = "submit" id = "next">Continue</button>`);
+      `<main class="group"><div class="start-page"><p>Correct! Your current score is ${store.score} out of 5</p>
+      <button type = "submit" id = "next">Continue</button></main>`);
     
       
     
@@ -143,8 +118,8 @@ function generateCorrect() {
     store.score += 1;
     store.questionNumber += 1;
     $('main').html(
-      `<p>Correct! Your current score is ${store.score} out of 5</p> 
-      <button type = "submit" id = "finish">Complete</button>
+      `<main class="group"><div class="start-page"><p>Correct! Your current score is ${store.score} out of 5</p> 
+      <button type = "submit" id = "finish">Complete</button></main>
       `);
   }
 
@@ -158,9 +133,9 @@ function generateWrong() {
     store.questionNumber += 1;
 
     $('main').html(`
-    <h1>You current score ${store.score} out of 5</h1><br/>
+    <main class="group"><div class="start-page"><h1>You current score ${store.score} out of 5</h1><br/>
     <p>Incorrect.  Your answer was ${answer} while the correct answer was ${correct}. </p> 
-    <button type = "submit" id ="next" >Continue</button>
+    <button type = "submit" id ="next" >Continue</button></main>
     `);
 
 
@@ -169,10 +144,11 @@ function generateWrong() {
     store.questionNumber += 1;
 
     $('main').html(`
-    <p>You current score ${store.score} out of 5</p><br/>
+    <main class="group">
+    <div class="start-page"><p>You current score ${store.score} out of 5</p><br/>
     <p>Incorrect.  Your answer was ${answer} while the correct answer was ${correct}. </p> 
-    <button type="submit" id="finish">Complete</button>`);
-
+    <button type="submit" id="finish">Complete</button></main>
+    `);
   }
   //store.questionNumber ++;
 }
